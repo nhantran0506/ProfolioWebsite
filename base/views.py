@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import *
 from django.http import HttpResponseRedirect
 import requests
+import os
 # Create your views here.
 
 
@@ -26,15 +27,14 @@ def contact(request):
         {message}
         """
 
-        bot_token = '7046829707:AAHt9d9m8kV3lYNu6smrxNt2sN57GTeLt8A'
-        chat_id = '6505326895'
+        bot_token = os.environ.get("BOT_TOKEN")
+        chat_id = os.environ.get("CHAT_ID")
 
 
         send_text = f'https://api.telegram.org/bot{bot_token}/sendMessage?chat_id={chat_id}&parse_mode=Markdown&text={full_msg}'
 
         requests.get(send_text)
 
-        return HttpResponseRedirect('thank_you')
 
     return render(request, 'contact.html')
 
