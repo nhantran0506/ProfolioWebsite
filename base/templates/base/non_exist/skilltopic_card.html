@@ -1,0 +1,18 @@
+<div class="card" style="background-color: #76ABAE;">
+    <div class="card-header" id="heading{{ skilltopic.id }}">
+        <h5 class="mb-0">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{ skilltopic.id }}" aria-expanded="true" aria-controls="collapse{{ skilltopic.id }}" style="color: #31363F;">
+                {{ skilltopic.name }}
+            </button>
+        </h5>
+    </div>
+    <div id="collapse{{ skilltopic.id }}" class="collapse" aria-labelledby="heading{{ skilltopic.id }}" data-parent="#accordionExample">
+        <div class="card-body">
+            <ul>
+                {% for skill in skilltopic.skills.all %}
+                    <li><b>{{ skill.name }}</b> : {{skill.exp}} Year Exp</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>

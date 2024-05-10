@@ -1,0 +1,10 @@
+
+<div class="container p-5" id="skills">
+    <h1>My Skills</h1>
+    <div class="accordion" id="accordionExample">
+        {% for skilltopic in skilltopics %}
+            {% include "base/non_exist/skilltopic_card.html" %}
+        {% endfor %}
+    </div>
+</div>
+
