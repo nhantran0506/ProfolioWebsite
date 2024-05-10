@@ -17,7 +17,6 @@ def home(request):
 
 def contact(request):
     if request.method == 'POST':
-        print("dm thanh duy")
         name = request.POST.get('name')
         message = request.POST.get('message')
         email = request.POST.get('email')
@@ -36,6 +35,6 @@ def contact(request):
         requests.get(send_text)
 
 
-    return render(request, 'contact.html')
+    return render(request)
 
 
