@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import *
 from django.http import HttpResponseRedirect
 import requests
@@ -29,12 +29,12 @@ def contact(request):
         bot_token = os.environ.get("BOT_TOKEN")
         chat_id = os.environ.get("CHAT_ID")
 
-
         send_text = f'https://api.telegram.org/bot{bot_token}/sendMessage?chat_id={chat_id}&parse_mode=Markdown&text={full_msg}'
 
         requests.get(send_text)
 
+        return redirect('home')  
 
-    return render(request)
+    return render(request, 'contact.html')
 
 
